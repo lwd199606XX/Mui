@@ -1,0 +1,68 @@
+
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		
+		<style type="text/css">
+			
+		</style>
+	</head>
+
+	<body>
+		<div>
+			<br>
+			<button id="tou" >隐藏</button>
+			<br>
+			<br>
+			<img src="../images/img01.jpg" id="imgFlo" width="460" height="460">
+			<br>
+			<br>
+			<div>
+				<button id="prev">上一张</button>
+				<button id="next">下一张</button>
+			</div>
+		</div>
+		<script type="text/javascript">
+			//获取标签
+			var touBtn = document.getElementById('tou');
+			var newImg = document.getElementsByTagName('img')[0];
+			
+			var imgFlo = document.getElementById('imgFlo');
+			var prevBtn = document.getElementById('prev');
+			var nextBtn = document.getElementById('next');
+			
+			var minIndex = 1,maxIndex = 8;curIndex = minIndex;
+			//监听按钮的点击变化
+			touBtn.onclick = function(){
+				if(touBtn.innerHTML === '隐藏'){
+					newImg.style.display = 'none';
+					touBtn.innerHTML = '显示';
+				}else{
+					newImg.style.display = 'block';
+					touBtn.innerHTML = '隐藏';
+				}
+			}
+			
+			prevBtn.onclick = function(){
+				if(curIndex === minIndex){
+					curIndex = maxIndex;
+				}else{
+					curIndex--;
+				}
+				imgFlo.setAttribute('src',`../images/img0${curIndex}.jpg`)
+			}
+			nextBtn.onclick = function(){
+				if(curIndex === maxIndex){
+					curIndex = minIndex;
+				}else{
+					curIndex++;
+				}
+				imgFlo.setAttribute('src',`../images/img0${curIndex}.jpg`)
+			}
+		</script>
+	</body>
+
+</html>
